@@ -1,14 +1,19 @@
-import { useActions, useProcessManager, useSoulStore } from "soul-engine";
+import { useActions, useProcessManager, useSoulMemory, useSoulStore } from "soul-engine";
 import content from "./content/index.js";
+import { djb2Hash } from "./utils.js";
 
 export async function initializeSoulStore() {
   const { log } = useActions();
-  const { invocationCount } = useProcessManager();
 
-  if (invocationCount > 0) {
-    log("Souls store already initialized");
+  const savedHash = useSoulMemory("soulStoreHash", "");
+  const currentHash = djb2Hash(JSON.stringify(content)).toString(16);
+
+  if (savedHash.current === currentHash) {
+    log("Soul store already initialized");
     return;
   }
+
+  savedHash.current = currentHash;
 
   await reindexContent();
 }

@@ -46,16 +46,6 @@ export function getUserDataFromDiscordEvent(discordEvent: DiscordEventData | und
   };
 }
 
-export function random() {
-  const a = 1664525;
-  const c = 1013904223;
-  const m = 2 ** 32;
-
-  let seed = Date.now();
-  seed = (a * seed + c) % m;
-  return seed / m;
-}
-
 export function newMemory(content: string) {
   return [
     {
@@ -83,4 +73,23 @@ export function getLastMessageFromUserRole(step: CortexStep) {
 
   const content = memory?.split(":")[1]?.trim() || null;
   return { memory, content };
+}
+
+export function random() {
+  const a = 1664525;
+  const c = 1013904223;
+  const m = 2 ** 32;
+
+  let seed = Date.now();
+  seed = (a * seed + c) % m;
+  return seed / m;
+}
+
+export function djb2Hash(str: string): number {
+  let hash = 5381;
+  for (let i = 0; i < str.length; i++) {
+    const char = str.charCodeAt(i);
+    hash = (hash << 5) + hash + char;
+  }
+  return hash;
 }
