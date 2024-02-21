@@ -202,7 +202,7 @@ async function thinkOfReplyMessage(step: CortexStep<any>, userName: string) {
 async function reactWithEmoji(step: CortexStep<any>, discordEvent: DiscordEventData | undefined) {
   const { log, dispatch } = useActions();
 
-  if (random() < 0.333) {
+  if (random() > 0.35) {
     log("Skipping emoji reaction");
     return;
   }
