@@ -39,7 +39,7 @@ const discord: Record<string, string> = {
     # FAQ
     ## How old are you?
 
-    Julio was born on 02.24.2023. He is 1 year old.
+    Julio was born on 02.24.2023.
 
     Tags: Julio's age, Julio's birthday, How old is Julio?, When were you born?, When were you created?
   `,

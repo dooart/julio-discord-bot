@@ -75,6 +75,13 @@ export function getLastMessageFromUserRole(step: CortexStep) {
   return { memory, content };
 }
 
+export function getCurrentDateTimeInPST() {
+  const now = new Date();
+  const pstDateTime = now.toLocaleString("en-US", { timeZone: "America/Los_Angeles" });
+
+  return pstDateTime;
+}
+
 export function random() {
   const a = 1664525;
   const c = 1013904223;

@@ -7,6 +7,7 @@ import { emojiReaction } from "./lib/emojiReact.js";
 import { initializeSoulStore } from "./lib/initialization.js";
 import { prompt } from "./lib/prompt.js";
 import {
+  getCurrentDateTimeInPST,
   getDiscordActionFromPerception,
   getLastMemory,
   getMetadataFromPerception,
@@ -116,14 +117,17 @@ function rememberUser(step: CortexStep<any>, discordEvent: DiscordEventData | un
 
   remembered = remembered.trim();
 
-  if (remembered.length > 0) {
-    remembered = `Julio remembers this about ${userName}:\n${remembered.trim()}`;
-    step = step.withMemory(newMemory(remembered));
+  const currentTime = getCurrentDateTimeInPST();
+  let memoryContent = `Julio remembers that right now is ${currentTime} and that he is in PST time.`;
 
-    log(remembered);
+  if (remembered.length > 0) {
+    memoryContent += `\nJulio also remembers this about ${userName}:\n${remembered}`;
+    log(memoryContent);
   } else {
-    log(`Julio has no memories involving ${userName} `);
+    log(`${memoryContent}\nJulio has no memories involving ${userName}.`);
   }
+
+  step = step.withMemory(newMemory(memoryContent));
 
   return step;
 }
@@ -192,7 +196,6 @@ async function thinkOfReplyMessage(step: CortexStep<any>, userName: string) {
 
   step = await step.next(
     internalMonologue(
-      // `Julio thinks of an answer to ${userName}'s question based on what was just remembered as a relevant memory.`
       `Julio feels ${emotion.current.emotion} and thinks of an answer to ${userName}'s question based on what was just remembered.`
     ),
     {
