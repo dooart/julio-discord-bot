@@ -15,6 +15,7 @@ import {
   newMemory,
   random,
 } from "./lib/utils.js";
+import { defaultEmotion } from "./subprocesses/emotionalSystem.js";
 
 const initialProcess: MentalProcess = async ({ step: initialStep }) => {
   const { log } = useActions();
@@ -185,11 +186,14 @@ async function isUserTalkingToJulio(step: CortexStep<any>, userName: string) {
 }
 
 async function thinkOfReplyMessage(step: CortexStep<any>, userName: string) {
+  const emotion = useSoulMemory("emotionalState", defaultEmotion);
+
   step = await withSoulStoreContext(step);
 
   step = await step.next(
     internalMonologue(
-      `Julio thinks of an answer to ${userName}'s question based on what was just remembered as a relevant memory.`
+      // `Julio thinks of an answer to ${userName}'s question based on what was just remembered as a relevant memory.`
+      `Julio feels ${emotion.current.emotion} and thinks of an answer to ${userName}'s question based on what was just remembered.`
     ),
     {
       model: "quality",
