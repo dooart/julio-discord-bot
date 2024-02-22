@@ -89,11 +89,11 @@ const julio: Record<string, string> = {
     # Super Julio World
     ## Artist, Creator, and Founder
             
-    The creator of Julio and founder of Super Julio World is Paris. Her Discord id is <@951090518400598027>.
-    
-    Twitter: https://twitter.com/PARIS_sats
+    The creator of Julio is Paris. She is also the founder of Super Julio World.
 
-    Linktree: https://t.co/x1DMSZCwUS
+    Here's you you can talk to her:
+    - Twitter: https://twitter.com/PARIS_sats
+    - Linktree: https://t.co/x1DMSZCwUS
   `,
 };
 
