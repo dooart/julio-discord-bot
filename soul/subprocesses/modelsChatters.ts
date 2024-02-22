@@ -85,7 +85,14 @@ const modelsChatters: MentalProcess = async ({ step: initialStep }) => {
 
       log("Learnings:", step.value);
 
-      userModel.current = await step.compute(userNotes(userName));
+      let learnings = await step.compute(userNotes(userName));
+      learnings = learnings
+        .split("\n")
+        .filter((line) => !line.startsWith("- Display name:"))
+        .join("\n");
+      learnings = `- Display name: "${displayName}"\n${learnings}`;
+
+      userModel.current = learnings;
     }
   }
 
