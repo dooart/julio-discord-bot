@@ -31,13 +31,18 @@ export class SoulGateway {
 
   constructor(client: Client) {
     this.client = client;
-    this.soul = new Soul({
+
+    const soulConfig = {
       organization: process.env.SOUL_ENGINE_ORG!,
       blueprint: process.env.SOUL_BLUEPRINT!,
       soulId: process.env.SOUL_ID || undefined,
       token: process.env.SOUL_ENGINE_API_KEY || undefined,
       debug: process.env.SOUL_DEBUG === "true",
-    });
+    };
+
+    console.log("soul config:", soulConfig);
+
+    this.soul = new Soul(soulConfig);
 
     this.handleMessage = this.handleMessage.bind(this);
     this.onSoulSays = this.onSoulSays.bind(this);
