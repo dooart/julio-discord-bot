@@ -35,6 +35,14 @@ const discord: Record<string, string> = {
 
     I also admire Satoshi Nakamoto, the creator of Bitcoin. Without him, none of this would be possible.
   `,
+  howOldAreYou: prompt`
+    # FAQ
+    ## How old are you?
+
+    Julio was born on 02.24.2023.
+
+    Tags: Julio's age, Julio's birthday, How old is Julio?, When were you born?, When were you created?
+  `,
 };
 
 export default discord;
