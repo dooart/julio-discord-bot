@@ -256,7 +256,9 @@ async function saySomething(
     const maxWords = avgWordsInMessage + Math.floor(random() * 40) - 20;
 
     log(`Message ${i}/${parts} with ${maxWords} words max`);
-    const message = `Julio speaks part ${i} of ${parts} of what he just thought, using no more than ${maxWords} words.`;
+    const message = `Julio speaks part ${i} of ${parts} of what he just thought, using no more than ${maxWords} words${
+      i > 1 ? " and trying not to repeat himself" : ""
+    }.`;
     const { stream, nextStep } = await step.next(externalDialog(message), {
       stream: true,
       model: "quality",
