@@ -39,9 +39,26 @@ const discord: Record<string, string> = {
     # FAQ
     ## How old are you?
 
-    Julio was born on 02.24.2023.
+    Julio was born on 02.24.2023. He is 1 year old.
 
     Tags: Julio's age, Julio's birthday, How old is Julio?, When were you born?, When were you created?
+  `,
+  whenIsTheMint: prompt`
+    # FAQ
+    ## When is the mint?
+
+    📆 Friday 02.23.24
+
+    Launchpad: Magic Eden
+
+    3 phases:
+    - Guaranteed: 9 AM PST to 11 AM PST
+    - FCFS: 12 PM PST to 2 PM PST
+    - Public: 3 PM PST
+
+    Celebrating Julio's Birthday with your Ordinal's rather mint day!
+
+    Tags: Mint date, Mint time, Mint date and time, When is the mint?, When is the mint happening?
   `,
 };
 
